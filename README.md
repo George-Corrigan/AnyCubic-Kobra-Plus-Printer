@@ -29,28 +29,32 @@ Below is a list of versions and changes made:
 
 1. Download the latest release.
 
-2. Locate the ìfirmware.binî file copy to the root of a blank SD card.
+2. Locate the ‚Äúfirmware.bin‚Äù file copy to the root of a blank SD card.
 
 3. Turn off the printer and insert the SD card in the printer (upside down, with the metal contacts up).
 
-4. Turn on the printer and wait the a series of beeps, then the normal UI will load.
+4. Remove any USB cable attached to the printer.
 
-5. Remove the SD card.
+5. Turn on the printer and wait the a series of beeps, then the normal UI will load.
+
+6. Remove the SD card.
 
 
 ## Reverting to original factory printer firmware
 
 Note: This is to go back to factory defaults if you do not wish to continue using ShadowUI.
 
-1. Go to AnyCubicís website firmware page [https://www.anycubic.com/pages/firmware-software]. Select your printer series on the left. Select your model on the right. You should see latest firmware version and a link to download it.
+1. Go to AnyCubic‚Äôs website firmware page [https://www.anycubic.com/pages/firmware-software]. Select your printer series on the left. Select your model on the right. You should see latest firmware version and a link to download it.
 
-2. Locate the ìfirmware.binî file copy to the root of a blank SD card.
+2. Locate the ‚Äúfirmware.bin‚Äù file copy to the root of a blank SD card.
 
 3. Turn off the printer and insert the SD card in the printer (upside down, with the metal contacts up).
 
-4. Turn on the printer and wait the a series of beeps, then the normal UI will load.
+4. Remove any USB cable attached to the printer.
 
-5. Remove the SD card.
+5. Turn on the printer and wait the a series of beeps, then the normal UI will load.
+
+6. Remove the SD card.
 
 - - - -
 
