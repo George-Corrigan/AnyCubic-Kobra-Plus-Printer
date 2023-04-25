@@ -1785,7 +1785,7 @@ namespace Anycubic {
         if(z_off <= -5) {
             return ;
         }
-        z_off -= 0.05f;
+        z_off -= BABYSTEP_MULTIPLICATOR_Z;
         setZOffset_mm(z_off);
 
         str_buf[0]=0;
@@ -1799,7 +1799,7 @@ namespace Anycubic {
 //          SERIAL_ECHOLNPAIR("Z now:", getAxisPosition_mm(Z));
 //        }
 
-        int16_t steps = mmToWholeSteps(-0.05, Z);
+        int16_t steps = mmToWholeSteps(-BABYSTEP_MULTIPLICATOR_Z, Z);
         babystepAxis_steps(steps, Z);
 
         z_change = true;
@@ -1817,7 +1817,7 @@ namespace Anycubic {
         if(z_off >= 5) {
             return ;
         }
-        z_off += 0.05f;
+        z_off += BABYSTEP_MULTIPLICATOR_Z;
         setZOffset_mm(z_off);
   
         str_buf[0]=0;
@@ -1835,7 +1835,7 @@ namespace Anycubic {
         }
 */
 
-        int16_t steps = mmToWholeSteps(0.05, Z);
+        int16_t steps = mmToWholeSteps(BABYSTEP_MULTIPLICATOR_Z, Z);
         babystepAxis_steps(steps, Z);
 
         z_change = true;
@@ -2276,12 +2276,14 @@ namespace Anycubic {
           break;
 
           case 5:   // about
-						static char version_cmd[16]={0};
-						static char IapVersion[4]={0};
-						memcpy(IapVersion, (uint8_t *)(0x7F00), 4);
-						sprintf_P(version_cmd,"%s%s\n",FIRMWARE_VER,IapVersion);
+
+//static char version_cmd[16]={0};
+//static char IapVersion[4]={0};
+//memcpy(IapVersion, (uint8_t *)(0x7F00), 4);
+//sprintf_P(version_cmd,"%s%s\n",FIRMWARE_VER,IapVersion);
+
             SendTxtToTFT(DEVICE_NAME, TXT_ABOUT_DEVICE_NAME);
-            SendTxtToTFT(version_cmd, TXT_ABOUT_FW_VERSION);
+            SendTxtToTFT(FIRMWARE_VER, TXT_ABOUT_FW_VERSION);
             SendTxtToTFT(BUILD_VOLUME, TXT_ABOUT_PRINT_VOLUMN);
             SendTxtToTFT(TECH_SUPPORT, TXT_ABOUT_TECH_SUPPORT);
 
@@ -2477,7 +2479,7 @@ namespace Anycubic {
                     return ;
                 }
                 
-                z_off = getZOffset_mm() - 0.0500f;
+                z_off = getZOffset_mm() - BABYSTEP_MULTIPLICATOR_Z;
                 setZOffset_mm(z_off);
 
                 strcpy_P(str_buf, ftostr(z_off));
@@ -2485,7 +2487,7 @@ namespace Anycubic {
 
                 if (isAxisPositionKnown(Z)) {
                   const float currZpos = getAxisPosition_mm(Z);
-                  setAxisPosition_mm(currZpos-0.05, Z);
+                  setAxisPosition_mm(currZpos-BABYSTEP_MULTIPLICATOR_Z, Z);
                 }
 
                 setSoftEndstopState(true);
@@ -2498,7 +2500,7 @@ namespace Anycubic {
                 if(getZOffset_mm() >= 5) {
                     return ;
                 }
-                z_off = getZOffset_mm() + 0.0500f;
+                z_off = getZOffset_mm() + BABYSTEP_MULTIPLICATOR_Z;
                 setZOffset_mm(z_off);
 
                 strcpy_P(str_buf, ftostr(z_off));
@@ -2506,7 +2508,7 @@ namespace Anycubic {
 
                 if (isAxisPositionKnown(Z)) {  // Move Z axis
                   const float currZpos = getAxisPosition_mm(Z);
-                  setAxisPosition_mm(currZpos+0.05, Z);
+                  setAxisPosition_mm(currZpos+BABYSTEP_MULTIPLICATOR_Z, Z);
                 }
 
                 setSoftEndstopState(true);
@@ -3612,14 +3614,14 @@ namespace Anycubic {
         if(z_off <= -5) {
             return ;
         }
-        z_off -= 0.05f;
+        z_off -= BABYSTEP_MULTIPLICATOR_Z;
         setZOffset_mm(z_off);
 
         str_buf[0]=0;
         strcat(str_buf, ftostr(getZOffset_mm()));
         SendTxtToTFT(str_buf, TXT_LEVEL_OFFSET);
 
-        int16_t steps = mmToWholeSteps(-0.05, Z);
+        int16_t steps = mmToWholeSteps(-BABYSTEP_MULTIPLICATOR_Z, Z);
         babystepAxis_steps(steps, Z);
 
         z_change = true;
@@ -3633,14 +3635,14 @@ namespace Anycubic {
         if(z_off >= 5) {
             return ;
         }
-        z_off += 0.05f;
+        z_off += BABYSTEP_MULTIPLICATOR_Z;
         setZOffset_mm(z_off);
   
         str_buf[0]=0;
         strcat(str_buf, ftostr(getZOffset_mm()));
         SendTxtToTFT(str_buf, TXT_LEVEL_OFFSET);
 
-        int16_t steps = mmToWholeSteps(0.05, Z);
+        int16_t steps = mmToWholeSteps(BABYSTEP_MULTIPLICATOR_Z, Z);
         babystepAxis_steps(steps, Z);
 
         z_change = true;
